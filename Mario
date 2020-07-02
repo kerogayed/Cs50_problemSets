@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <cs50.h>
+
+int main (void)
+{
+     int length = get_int("Enter the length: ");
+//      printf("%d",length);
+     int length2 = length;
+     for (int looper =1 ; looper <= length2 ; looper++)
+     {
+         for (int looper2= 1 ; looper2 <= length-1 ; looper2++)
+         {
+             printf(" ");
+         }
+         length -- ;
+         for (int looper3 =1 ; looper3<=length2-length ;looper3++ )
+         {
+             printf("#");
+         }
+         printf("\n");
+
+     }
+
+}
