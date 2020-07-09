@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <cs50.h>
+int main(void)
+{
+	long long int user_input = get_long("Enter the number of the card: ");
+    int condition = 0 ;
+    int Type_card = 0 ;
+    int number_of_number = 0 ;
+    int checker = 0;
+    int final = 0;
+    int final2=0;
+    /*
+       Visa == 1
+       master_card == 2
+       American express == 2
+    */
+     do
+     {
+
+    if (user_input / 1000000000000000 == 4 || user_input / 1000000000000000 == 5)
+	{
+		if (user_input / 1000000000000000 == 4 )
+		{
+			Type_card = 1 ;
+			number_of_number = 16;
+		}
+		else if(user_input / 1000000000000000 == 5)
+		{
+		    Type_card = 2 ;
+		    number_of_number = 16;
+		}
+
+
+	}
+	else if (user_input / 100000000000000 == 34 ||user_input / 100000000000000 == 37)
+	{
+	   Type_card = 3 ;
+	   number_of_number = 15;
+	}
+	else if(user_input / 1000000000000 == 4)
+	{
+	    Type_card = 13 ;
+	}
+    else
+    {
+    	condition = 1 ;
+    }
+
+
+    	for (int looper = 1 ; looper <= number_of_number ; looper ++)
+    	{
+    		checker = user_input % 10 ;
+    		if(looper%2 != 0)
+    		{
+    			final+= checker * 2 ;
+    		}
+    		else
+    		{
+    			final2+= checker ;
+    		}
+        }
+
+        if ((final+final2)%10 == 0 )
+        {
+        	printf ("INVALID\n");
+        	break ;
+        }
+        else if (Type_card == 1)
+        {
+        	printf("The of the card is: Visa\n");
+        }
+        else if (Type_card == 2)
+        {
+        	printf("The of the card is: MsterCard\n");
+        }
+        else if (Type_card == 3)
+        {
+        	printf("The of the card is: AmericanExpress\n");
+        }
+
+     }
+     while (condition == 1);
+
+}
